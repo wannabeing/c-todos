@@ -1,5 +1,5 @@
-import { useRecoilState, useRecoilValue } from "recoil";
-import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
+import { useRecoilValue } from "recoil";
+import { createGlobalStyle, ThemeProvider } from "styled-components";
 import "./App.css";
 import { themeState } from "./atoms";
 import Todos from "./components/Todos";

@@ -2,13 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
-import {
-  Categories,
-  categoryState,
-  themeState,
-  todoSelector,
-  todoState,
-} from "../atoms";
+import { Categories, categoryState, themeState, todoSelector } from "../atoms";
 import CreateTodo from "./CreateTodo";
 import ShowTodo from "./ShowTodo";
 import darkMode from "../images/darkMode.png";
