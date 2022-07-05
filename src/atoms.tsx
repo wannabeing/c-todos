@@ -1,4 +1,5 @@
 import { atom, selector } from "recoil";
+import { recoilPersist } from "recoil-persist";
 
 export enum Categories {
   "TODO" = "TODO",
@@ -12,13 +13,24 @@ export interface ITodos {
   category: Categories;
 }
 
+// 로컬 스토리지 연결
+const { persistAtom } = recoilPersist({
+  key: "todoLocal",
+  storage: localStorage,
+});
+
 export const todoState = atom<ITodos[]>({
   key: "todo",
   default: [],
+  effects_UNSTABLE: [persistAtom],
 });
 export const categoryState = atom<Categories>({
   key: "category",
   default: Categories.TODO,
+});
+export const themeState = atom<Boolean>({
+  key: "theme",
+  default: true,
 });
 
 export const todoSelector = selector({

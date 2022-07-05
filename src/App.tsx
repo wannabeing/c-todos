@@ -1,6 +1,9 @@
-import { createGlobalStyle } from "styled-components";
+import { useRecoilState, useRecoilValue } from "recoil";
+import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import "./App.css";
+import { themeState } from "./atoms";
 import Todos from "./components/Todos";
+import { darkTheme, lightTheme } from "./theme";
 
 const Reset = createGlobalStyle`
   html, body, div, span, applet, object, iframe,
@@ -59,13 +62,21 @@ const Reset = createGlobalStyle`
     text-decoration: none;
     color: inherit;
   }
+  hr {
+    width: 50%;
+    color: ${(props) => props.theme.textColor};;
+  }
  
 `;
+
 function App() {
+  const theme = useRecoilValue(themeState);
   return (
     <>
-      <Reset />
-      <Todos />
+      <ThemeProvider theme={theme ? lightTheme : darkTheme}>
+        <Reset />
+        <Todos />
+      </ThemeProvider>
     </>
   );
 }
